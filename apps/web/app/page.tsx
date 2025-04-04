@@ -64,6 +64,7 @@ const LinksSectionForTest = () => {
 };
 
 const RootPage = ({ params }: { params: { forTest?: boolean } }) => {
+  console.log('RootPage is rendering');
   logger.info('Hello, world! RootPage')
 
   return (
