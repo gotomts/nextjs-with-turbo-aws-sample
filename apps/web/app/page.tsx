@@ -3,12 +3,10 @@ import Image from 'next/image';
 
 import { Card } from '@repo/ui/card';
 import { Code } from '@repo/ui/code';
-import { Button } from '@repo/ui/button';
 
 import styles from './page.module.css';
 import { logger } from '../shared/core/logger';
-
-logger.info('Hello, world!')
+import { LogButton } from '../components/LogButton';
 
 const Gradient = ({
   conic,
@@ -66,6 +64,8 @@ const LinksSectionForTest = () => {
 };
 
 const RootPage = ({ params }: { params: { forTest?: boolean } }) => {
+  logger.info('Hello, world! RootPage')
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -91,9 +91,9 @@ const RootPage = ({ params }: { params: { forTest?: boolean } }) => {
         </div>
       </div>
 
-      <Button appName="web (with-nestjs)" className={styles.button}>
+      <LogButton appName="web (with-nestjs)" className={styles.button}>
         Click me!
-      </Button>
+      </LogButton>
 
       <div className={styles.hero}>
         <div className={styles.heroContent}>
