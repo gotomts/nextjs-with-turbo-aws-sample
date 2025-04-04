@@ -6,7 +6,7 @@ import { Code } from '@repo/ui/code';
 
 import styles from './page.module.css';
 import { logger } from '../shared/core/logger';
-import { LogButton } from '../components/LogButton';
+// import { ClientSection } from '../components/ClientSections';
 
 const Gradient = ({
   conic,
@@ -91,9 +91,7 @@ const RootPage = ({ params }: { params: { forTest?: boolean } }) => {
         </div>
       </div>
 
-      <LogButton appName="web (with-nestjs)" className={styles.button}>
-        Click me!
-      </LogButton>
+      {/* <ClientSection /> */}
 
       <div className={styles.hero}>
         <div className={styles.heroContent}>
