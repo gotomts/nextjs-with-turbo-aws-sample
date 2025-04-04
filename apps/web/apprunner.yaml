@@ -1,0 +1,22 @@
+version: 1.0
+runtime: nodejs18
+build:
+  commands:
+    pre-build:
+      - npm install -g pnpm
+      - yum update -y
+      - yum install -y python3 make gcc-c++
+    build:
+      - cd ../..
+      - npm install -g pnpm
+      - pnpm install
+      - pnpm build
+      - cd apps/web
+  env:
+    - name: NEXT_PUBLIC_APP_ENV
+      value: production
+
+run:
+  command: cd apps/web && pnpm start
+  network:
+    port: 3000
