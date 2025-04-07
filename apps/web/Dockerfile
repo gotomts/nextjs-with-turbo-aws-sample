@@ -1,5 +1,6 @@
 FROM --platform=linux/amd64 node:20-slim
 
+ENV NODE_ENV=production
 WORKDIR /app
 
 # 必要最小限のビルドツール
@@ -21,4 +22,4 @@ RUN pnpm build
 
 EXPOSE 3000
 
-CMD cd apps/web && pnpm start
+CMD ["node", "apps/web/.next/standalone/apps/web/server.js"]
