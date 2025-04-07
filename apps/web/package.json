@@ -12,6 +12,7 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@aws-sdk/client-cloudwatch-logs": "^3.782.0",
     "@repo/ui": "workspace:*",
     "next": "^14.1.1",
     "pino": "^9.6.0",

@@ -1,6 +1,39 @@
+import { CloudWatchLogs } from '@aws-sdk/client-cloudwatch-logs';
 import pino, { type Logger } from 'pino'
 
 let logger: Logger
+
+const cloudWatchLogs = new CloudWatchLogs({ region: 'ap-northeast-1' }); // リージョンを指定
+
+const logGroupName = 'nextjs-with-turbo-aws-sample/application'; // ロググループ名
+const logStreamName = 'stream'; // ログストリーム名
+
+// const createLogStream = async () => {
+//   try {
+//     await cloudWatchLogs.createLogStream({ logGroupName, logStreamName });
+//   } catch (error) {
+//     console.error('Error creating log stream:', error);
+//   }
+// };
+
+const logToCloudWatch = async (message: string) => {
+  const params = {
+    logGroupName,
+    logStreamName,
+    logEvents: [
+      {
+        message,
+        timestamp: Date.now(),
+      },
+    ],
+  };
+
+  try {
+    await cloudWatchLogs.putLogEvents(params);
+  } catch (error) {
+    console.error('Error sending log to CloudWatch:', error);
+  }
+};
 
 if (typeof window === 'undefined') {
   // SSR
